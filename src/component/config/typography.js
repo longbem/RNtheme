@@ -1,7 +1,7 @@
 import Color from './color';
 import Spacing from './spacing';
 
-export const FONT_ZISE = {
+export default {
   EXTRA_LARGE: 35,
   LARGE: 26,
   MEDIUM: 16,

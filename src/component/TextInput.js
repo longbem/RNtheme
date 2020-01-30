@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, TextInput} from 'react-native';
-import {Color, Spacing, Typography} from '../styles/index';
+import {Color, Spacing, Typography} from './config';
 const Input = ({title, value, secureTextEntry, autoFocus, aaa}) => {
   return (
     <View style={[styles.box, aaa]}>
@@ -25,11 +25,11 @@ const styles = StyleSheet.create({
   },
   title: {
     color: Color.text_heading1,
-    fontSize: Typography.FONT_ZISE.MEDIUM,
+    fontSize: Typography.MEDIUM,
   },
   txtInput: {
     paddingTop: Spacing.mdeium,
-    fontSize: Typography.FONT_ZISE.MEDIUM,
+    fontSize: Typography.MEDIUM,
     paddingBottom: Spacing.small,
   },
 });

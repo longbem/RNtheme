@@ -11,8 +11,9 @@ import SVG, {Image, SvgUri} from 'react-native-svg';
 import I18n from '../locales/i18n';
 import {getLanguages} from 'react-native-i18n';
 import Input from '../component/TextInput';
-import {Color, Spacing, Typography, Button} from '../styles/index';
+import {Color, Spacing, Typography} from '../component/config';
 import images from '../theme/images';
+import Button from '../component/buttons';
 
 const Login = props => {
   const {navigate} = props.navigation;
@@ -35,29 +36,26 @@ const Login = props => {
             <View style={{width: languages[0] === 'en' ? '80%' : '70%'}}>
               <Text
                 style={{
-                  fontSize: Typography.FONT_ZISE.EXTRA_LARGE,
+                  fontSize: Typography.EXTRA_LARGE,
                   fontWeight: 'bold',
                 }}>
                 {I18n.t('greeting')},
               </Text>
               <Text
                 style={{
-                  fontSize: Typography.FONT_ZISE.MEDIUM,
+                  fontSize: Typography.MEDIUM,
                   color: Color.text_heading1,
                 }}>
                 {I18n.t('sign_in_to_continue')}
               </Text>
             </View>
             <View style={{paddingTop: 20}}>
-              <TouchableOpacity onPress={() => navigate('Sign')}>
-                <Text
-                  style={{
-                    fontSize: Typography.FONT_ZISE.LARGE,
-                    color: Color.border_button,
-                  }}>
-                  {I18n.t('sign')}
-                </Text>
-              </TouchableOpacity>
+              <Button
+                titleStyle={{color: Color.button}}
+                type="clear"
+                title={I18n.t('sign')}
+                onPress={() => navigate('Sign')}
+              />
             </View>
           </View>
 
@@ -81,39 +79,33 @@ const Login = props => {
               </Text>
             </TouchableOpacity>
           </View>
-
-          <TouchableOpacity style={styles.btn}>
-            <Text style={[styles.white, styles.txtBtn]}>
-              {I18n.t('sign_in')}
-            </Text>
-          </TouchableOpacity>
+          <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 20}}>
+            <Button
+              title={I18n.t('sign_in')}
+              onPress={() => navigate('Explore')}
+            />
+          </View>
         </View>
         <View
           style={{
             alignItems: 'center',
             padding: Spacing.extra_mdeium,
           }}>
-          <Text style={{fontSize: Typography.FONT_ZISE.LARGE}}>
-            {I18n.t('or')}
-          </Text>
+          <Text style={{fontSize: Typography.LARGE}}>{I18n.t('or')}</Text>
         </View>
+
         <View style={{}}>
-          <TouchableOpacity style={styles.btnWith}>
-            <View style={{left: -40}}>
-              <SVG width="20" height="20">
-                <Image href={images.fb} />
-              </SVG>
-            </View>
-            <Text style={[styles.txtBtnWith]}>{I18n.t('sign_in_with_fb')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.btnWith}>
-            <View style={{left: -50}}>
-              <SVG width="20" height="20">
-                <Image href={images.google} />
-              </SVG>
-            </View>
-            <Text style={[styles.txtBtnWith]}>{I18n.t('sign_in_with_gg')}</Text>
-          </TouchableOpacity>
+          <Button
+            buttonStyle={{marginBottom: 20}}
+            type="outline"
+            title={I18n.t('sign_in_with_fb')}
+            onPress={() => navigate('Explore')}
+          />
+          <Button
+            type={'outline'}
+            title={I18n.t('sign_in_with_gg')}
+            onPress={() => navigate('Explore')}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -138,20 +130,7 @@ const styles = StyleSheet.create({
   boxtxt: {
     padding: 20,
   },
-  btn: {
-    ...Button.base,
-    ...Button.btnBackground,
-    marginLeft: Spacing.extra_mdeium,
-    marginRight: Spacing.extra_mdeium,
-    marginBottom: Spacing.extra_mdeium,
-  },
-  btnWith: {
-    flexDirection: 'row',
-    ...Button.base,
-    borderColor: Color.border_btnWith,
-    borderWidth: Spacing.hairline,
-    marginTop: Spacing.extra_mdeium + 5,
-  },
+
   txtBtn: {
     ...Button.text,
   },
