@@ -7,6 +7,7 @@ export default {
   forgot_password: 'Forgot Password?',
   sign_in: 'SIGN IN',
   or: '-OR-',
+  see_all: 'See all',
   sign_in_with_fb: 'Sign In With Facebook',
   sign_in_with_gg: 'Sign In With Google',
   home: 'Home',

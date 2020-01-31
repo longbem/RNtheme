@@ -7,8 +7,8 @@ import {
   AccessibilityProps,
   TouchableOpacityProps,
   TouchableNativeFeedbackProps,
+  ViewStyle,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export interface ButtonProps
   extends TouchableOpacityProps,
@@ -17,6 +17,9 @@ export interface ButtonProps
   title?: string;
   titleStyle?: StyleProp<TextStyle>;
   buttonStyle?: StyleProp<ViewProps>;
+  renderIcon?: object;
+  iconStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
 }
 
 export default class Button extends React.Component<ButtonProps, any> {}

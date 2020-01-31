@@ -1,2 +1,4 @@
 import GetIconType from './getIconType';
-export {GetIconType};
+import nodeType from './nodeType';
+
+export {GetIconType, nodeType};

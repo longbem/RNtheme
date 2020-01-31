@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, TextInput} from 'react-native';
-import {Color, Spacing, Typography} from './config';
+import {Color, Spacing, Typography} from '../config';
+
 const Input = ({title, value, secureTextEntry, autoFocus, aaa}) => {
   return (
     <View style={[styles.box, aaa]}>

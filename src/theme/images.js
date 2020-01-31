@@ -1,6 +1,7 @@
-const images = {
-  fb: require('../images/Icon_Facebook.png'),
-  google: require('../images/icons8_Google_2.png'),
-};
+import Search_Camera from '../images/Search_Camera.svg';
+import Facebook from '../images/Icon_Facebook.svg';
 
-export default images;
+export default {
+  Search_Camera,
+  Facebook,
+};

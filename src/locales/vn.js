@@ -7,6 +7,7 @@ export default {
   sign_in: 'Đăng nhập',
   password: 'Mật khẩu',
   or: '-Hoặc-',
+  see_all: 'Xem thêm',
   sign_in_with_fb: 'Đăng nhập với Facebook',
   sign_in_with_gg: 'Đăng nhập với Google',
   home: 'Trang chủ',

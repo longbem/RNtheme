@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import {ViewPropTypes, TextPropTypes} from '../config';
-import {Color} from '../config';
+import {ViewPropTypes, TextPropTypes, Color} from '../config';
+import {nodeType, GetIconType} from '../helper';
 
 const defaultStyle = type => {
   try {
@@ -26,9 +26,9 @@ const Button = props => {
     type,
     buttonStyle,
     onPress,
-    theme,
+    renderIcon,
+    iconStyle,
   } = props;
-  console.log('TCL: props', props);
 
   return (
     <View
@@ -42,9 +42,17 @@ const Button = props => {
       ])}>
       <TouchableOpacity onPress={onPress} accessibilityRole="button">
         <View style={StyleSheet.flatten([styles.button(type), buttonStyle])}>
-          <Text style={StyleSheet.flatten([styles.title(type), titleStyle])}>
-            {title}
-          </Text>
+          {renderIcon && (
+            <View style={StyleSheet.flatten([styles.iconContainer, iconStyle])}>
+              {renderIcon}
+            </View>
+          )}
+
+          {!!title && (
+            <Text style={StyleSheet.flatten([styles.title(type), titleStyle])}>
+              {title}
+            </Text>
+          )}
         </View>
       </TouchableOpacity>
     </View>
@@ -58,6 +66,8 @@ Button.propTypes = {
   buttonStyle: ViewPropTypes.style,
   onPress: PropTypes.func,
   containerStyle: ViewPropTypes.style,
+  renderIcon: PropTypes.object,
+  iconStyle: ViewPropTypes.style,
 };
 
 Button.defaultProps = {
@@ -84,17 +94,7 @@ const styles = {
   container: {
     borderRadius: 3,
   },
-  disabled: (type, theme) => ({
-    ...conditionalStyle(type === 'solid', {
-      backgroundColor: theme.colors.disabled,
-    }),
-    ...conditionalStyle(type === 'outline', {
-      borderColor: color(theme.colors.disabled).darken(0.3),
-    }),
-  }),
-  disabledTitle: theme => ({
-    color: color(theme.colors.disabled).darken(0.3),
-  }),
+
   title: type => ({
     color: type === 'solid' ? 'white' : Color.text_title,
     fontSize: 16,
@@ -111,7 +111,7 @@ const styles = {
     }),
   }),
   iconContainer: {
-    marginHorizontal: 5,
+    marginHorizontal: 10,
   },
   raised: type =>
     type !== 'clear' && {
